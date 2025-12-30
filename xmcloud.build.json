@@ -1,7 +1,16 @@
 {
   "renderingHosts": {
-    "nextjs": {
-      "path": "./content-sdk-nextjs",
+    "content-sdk-nextjs": {
+      "path": "./headapps/content-sdk-nextjs",
+      "nodeVersion": "22.9.0",
+      "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
+      "enabled": true,
+      "type": "sxa",
+      "buildCommand": "build",
+      "runCommand": "next:start"
+    },
+      "sitecore-jss-nextjs": {
+      "path": "./headapps/sitecore-jss-nextjs",
       "nodeVersion": "22.9.0",
       "jssDeploymentSecret": "110F1C44A496B45478640DD36F80C18C9",
       "enabled": true,
