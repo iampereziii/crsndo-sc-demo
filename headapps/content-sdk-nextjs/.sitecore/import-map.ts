@@ -110,6 +110,9 @@ const importMap = [
       { name: 'FontAwesomeIcon', value: FontAwesomeIcon },
     ]
   }
+      { name: 'FontAwesomeIcon', value: FontAwesomeIcon },
+    ]
+  },
 ] as ImportEntry[];
 
 export default combineImportEntries(defaultImportEntries, importMap);
