@@ -9,7 +9,7 @@ import {
 
 import { useEffect, useState } from 'react';
 import React from 'react';
-import { AppPlaceholder, CdpHelper, useSitecore, Text, Image as Image_8a80e63291fea86e0744df19113dc44bec187216 } from '@sitecore-content-sdk/nextjs';
+import { AppPlaceholder, CdpHelper, useSitecore, Text, DateField, Image as Image_8a80e63291fea86e0744df19113dc44bec187216 } from '@sitecore-content-sdk/nextjs';
 import componentMap from '.sitecore/component-map';
 import Head from 'next/head';
 import client from 'lib/sitecore-client';
@@ -18,6 +18,9 @@ import * as FEAAS from '@sitecore-feaas/clientside/react';
 import nextConfig from 'next.config';
 import { pageView } from '@sitecore-cloudsdk/events/browser';
 import config from 'sitecore.config';
+import Link from 'next/link';
+import { faFacebook, faInstagram, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const importMap = [
   {
@@ -35,6 +38,7 @@ const importMap = [
       { name: 'CdpHelper', value: CdpHelper },
       { name: 'useSitecore', value: useSitecore },
       { name: 'Text', value: Text },
+      { name: 'DateField', value: DateField },
       { name: 'Image', value: Image_8a80e63291fea86e0744df19113dc44bec187216 },
     ]
   },
@@ -84,6 +88,26 @@ const importMap = [
     module: 'sitecore.config',
     exports: [
       { name: 'default', value: config },
+    ]
+  },
+  {
+    module: 'next/link',
+    exports: [
+      { name: 'default', value: Link },
+    ]
+  },
+  {
+    module: '@fortawesome/free-brands-svg-icons',
+    exports: [
+      { name: 'faFacebook', value: faFacebook },
+      { name: 'faInstagram', value: faInstagram },
+      { name: 'faLinkedinIn', value: faLinkedinIn },
+    ]
+  },
+  {
+    module: '@fortawesome/react-fontawesome',
+    exports: [
+      { name: 'FontAwesomeIcon', value: FontAwesomeIcon },
     ]
   }
 ] as ImportEntry[];
