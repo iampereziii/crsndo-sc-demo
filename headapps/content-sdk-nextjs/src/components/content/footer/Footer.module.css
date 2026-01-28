@@ -1,6 +1,6 @@
 .footerArea {
   min-height: 90vh;
-  padding: 5rem 0rem 2rem;
+  padding: 7rem 0rem 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,10 +18,11 @@
   font-weight: 900;
   letter-spacing: -0.02em;
   text-transform: uppercase;
-  margin: 0 0 4rem;
+  margin: 0 0 6rem;
   color: #000;
   text-align: left;
   line-height: 1;
+  font-family: "Heading", monospace;
 }
 
 .primaryNav,
@@ -52,13 +53,13 @@
 .primaryNav span {
   font-size: 24px;
   font-weight: 700;
-  font-family: "heading", "heading Fallback";
+  font-family: "Heading", monospace;
 }
 
 .secondaryNav a {
   font-size: 16px;
   letter-spacing: 0.05em;
-  font-family: "IBM Plex Mono", "IBM Plex Mono Fallback";
+  font-family: 'IBM Plex Mono', monospace;
 }
 
 .soundWave {
@@ -91,7 +92,7 @@
 }
 
 .copyright {
-    font-family: "IBM Plex Mono", "IBM Plex Mono Fallback";
+    font-family: 'IBM Plex Mono', monospace;
     font-size: 16px;
 }
 

@@ -5,6 +5,14 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: 'Heading';
+  src: url('/fonts/Heading.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --primary-color: #c8ff00;
   --secondary-color: #0052a3;
