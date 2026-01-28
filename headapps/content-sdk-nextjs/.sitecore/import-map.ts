@@ -102,14 +102,9 @@ const importMap = [
       { name: 'faFacebook', value: faFacebook },
       { name: 'faInstagram', value: faInstagram },
       { name: 'faLinkedinIn', value: faLinkedinIn },
-    ]
-  },
-  {
-    module: '@fortawesome/react-fontawesome',
-    exports: [
       { name: 'FontAwesomeIcon', value: FontAwesomeIcon },
     ]
-  }
+  },
 ] as ImportEntry[];
 
 export default combineImportEntries(defaultImportEntries, importMap);
