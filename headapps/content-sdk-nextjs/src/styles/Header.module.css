@@ -1,10 +1,16 @@
 
 .headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   padding: 0;
-  position: relative;
+  height: 68px;
 }
 
 .navLink {
@@ -12,7 +18,11 @@
   color: #333;
   font-size: 16px;
   font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.navLink a {
+  cursor: pointer;
 }
 
 .iconLink {
@@ -33,127 +43,228 @@
   justify-content: space-between;
   width: 1280px;
   padding: 1.5rem 3rem;
-  background-color: var(--secondary-color);
+  background-color: #fff;
 }
 
 .navLinks {
   display: flex;
   gap: 30px;
   margin: 0;
-  padding: 0;
-  list-style: none;
+  align-items: center;
 }
 
-.navLinks > a {
+.navLinks li > a {
   text-decoration: none;
   color: #000;
 }
 
-.navItem {
-  display: flex;
-  align-items: center;
-}
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  background: transparent;
-  border: none;
-  padding: 1rem;
+.cartIcon a {
   cursor: pointer;
 }
 
-.hamburgerLine {
-  width: 22px;
-  height: 2px;
-  background-color: #333;
-}
 
-.mobileMenu {
-  position: fixed;
-  top: 58px;
-  left: 0;
-  right: 0;
-  background-color: var(--secondary-color);
-  padding: 1rem;
+.mobileSearchLink {
   display: none;
-  flex-direction: column;
-  gap: 1.5rem;
-  z-index: 50;
-  height: calc(100vh - 88px);
 }
 
-.mobileMenuOpen {
-  display: flex;
-}
 
-.mobileLinks {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
+/* =========================
+   Responsive @ 1024px
+   ========================= */
 
-.mobileLinks a {
-  text-decoration: none;
-  color: #333;
-  font-size: 16px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
-}
-
-.mobileMenu > ul:first-child {
-  height: 100%;
-  justify-content: center;
-  gap: 30px;
-}
-
-.mobileMenu > ul:nth-child(2) {
-  border-top: 1px solid #d4d4d4;
-  padding: 1rem ;
-}
-
-.mobileTextAndCart {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: 100%;
-}
-
-.mobileTextAndCart > div{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-}
-
-@media (max-width: 1023px) {
-  .headerWrapper {
-    align-items: flex-start;
-  }
-
+@media (max-width: 1024px) {
   .navWrapper {
-    padding: .5rem 1.5rem;
-    justify-content: flex-end;
+    width: 100%;
+    padding: 1rem 1.5rem;
   }
 
-  .navLinks {
+  /* Hide all except cart + mobile search */
+  .navLinks li:not(.cartIcon):not(.mobileSearchLink) {
     display: none;
   }
+}
 
-  .hamburger {
+/* =========================
+   Hamburger button
+   ========================= */
+
+.mobileMenuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobileMenuButton span {
+  width: 20px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+}
+
+
+/* =========================
+   Fullscreen Mobile Menu
+   ========================= */
+
+.mobileMenuBottom {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  border-top: 1px solid #d4d4d4
+}
+
+.mobileMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileMenuBottom a,
+.mobileMenu a {
+  padding: 1.25rem 0;
+  display:block;
+  text-decoration: none;
+  color: #000;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+}
+
+.mobileMenuButton {
+  position: relative;
+  z-index: 1001; /* above menu */
+  transition: background-color 0.3s ease;
+}
+
+.mobileMenuButton span {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Open state */
+.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.popupContainer {
+  position: fixed;
+  right: 0px;
+  top: 68px;
+  width: 68.85%;
+  background-color: #fff;
+  z-index: 999;
+  padding: 2rem 2rem; /* space for fixed header */
+  text-align: left;
+}
+
+.mobileContainer,
+.popupContainer {
+  position: fixed;
+  opacity: 0;             /* start invisible */
+  visibility: hidden;     /* remove from interaction */
+  pointer-events: none;   /* prevent clicks */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobileContainer.show,
+.popupContainer.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+.popupContainer h2 {
+  font-size: 24px;
+  font-family: "Heading", monospace;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+  display:block;
+}
+
+.searchMenu input {
+  display: inline-block;
+  width: calc(100% - 60px);
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.searchMenu input:focus {
+  border-color: #000;
+}
+
+.cartMenu button,
+.searchMenu button {
+  display: inline-block;
+  width: 60px;
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #c8ff00;
+}
+
+.cartMenu p {
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 40px;
+}
+
+.cartMenu button {
+  width: fit-content;
+}
+
+@media (max-width: 1024px) {
+  .mobileContainer {
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    z-index: 999;
+    padding: 2rem 2rem; /* space for fixed header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobileMenuButton {
     display: flex;
   }
-
-  .mobileMenu {
-    justify-content: space-between;
+    /* Show mobile search */
+  .mobileSearchLink {
+    display: block;
   }
 
-  .mobileTextAndCart {
+  .mobileSearchLink a {
+    cursor: pointer;
+  }
+
+  /* Show hamburger */
+  .mobileMenuButton {
     display: flex;
+  }
+  .popupContainer {
+    inset: 0;
+    width: 100%;
+    padding: 10rem 2rem;
+    box-sizing:border-box;
   }
 }

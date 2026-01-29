@@ -31,6 +31,10 @@ body {
   position: relative;
 }
 
+main {
+  margin-top: 20px;
+}
+
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -127,11 +131,8 @@ ul {
   pointer-events: none;
 }
 
-
-header {
-  position: sticky;
-  width: 100%;
-  z-index: 999;
-  top: 0;
-  margin-bottom: -128px;
+@media (max-width: 1024px) {
+  main {
+    margin-top: 68px;
+  }
 }

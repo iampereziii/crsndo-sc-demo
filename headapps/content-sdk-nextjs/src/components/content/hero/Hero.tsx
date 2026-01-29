@@ -26,8 +26,8 @@ export const Default = (props: HeroProps): React.JSX.Element => {
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.contentInner}>
-            <h1 className={styles.subtitle}>Monarch II</h1>
-            <h1 className={styles.title}>A symphonic boom.</h1>
+            <h2 className={styles.subtitle}>Monarch II</h2>
+            <h3 className={styles.title}>A symphonic boom.</h3>
             <div className={styles.buttons}>
               <a href="/#" className={styles.btnPrimary}>Learn more</a>
               <a href="/#" className={styles.btnSecondary}>Buy</a>
