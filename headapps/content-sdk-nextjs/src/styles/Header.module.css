@@ -9,10 +9,8 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 20px;
   padding: 0;
   height: 68px;
-
 }
 
 .navLink {
@@ -27,9 +25,16 @@
   cursor: pointer;
 }
 
+.iconLink {
+  display: inline-flex;
+  align-items: center;
+  color: #333;
+}
+
 .logo {
   background-color: var(--primary-color);
   padding: 30px 25px;
+  z-index: 60;
 }
 
 .navWrapper {
