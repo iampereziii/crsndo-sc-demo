@@ -11,8 +11,8 @@
   justify-content: space-between;
   gap: 20px;
   padding: 0;
-  height: 75px;
-  background-color: #fff; /* IMPORTANT */
+  height: 68px;
+
 }
 
 .navLink {
@@ -38,6 +38,7 @@
   justify-content: space-between;
   width: 1280px;
   padding: 1.5rem 3rem;
+  background-color: #fff;
 }
 
 .navLinks {
@@ -159,20 +160,20 @@
 .popupContainer {
   position: fixed;
   right: 0px;
-  top: 75px;
-  width: 70%;
+  top: 68px;
+  width: 68.85%;
   background-color: #fff;
   z-index: 999;
   padding: 2rem 2rem; /* space for fixed header */
   text-align: left;
 }
 
-
 .mobileContainer,
 .popupContainer {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  position: fixed;
+  opacity: 0;             /* start invisible */
+  visibility: hidden;     /* remove from interaction */
+  pointer-events: none;   /* prevent clicks */
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
@@ -182,7 +183,6 @@
   visibility: visible;
   pointer-events: all;
 }
-
 .popupContainer h2 {
   font-size: 24px;
   font-family: "Heading", monospace;

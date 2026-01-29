@@ -30,6 +30,10 @@ body {
   margin: 0;
 }
 
+main {
+  margin-top: 20px;
+}
+
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -124,4 +128,10 @@ ul {
 
 .disable-a-pointer-events a {
   pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  main {
+    margin-top: 68px;
+  }
 }
