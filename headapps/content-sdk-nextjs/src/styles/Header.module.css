@@ -1,17 +1,30 @@
 
 .headerWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
   padding: 0;
+  height: 75px;
+  background-color: #fff; /* IMPORTANT */
 }
+
 .navLink {
   text-decoration: none;
   color: #333;
   font-size: 16px;
   font-family: 'IBM Plex Mono', monospace;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+.navLink a {
+  cursor: pointer;
 }
 
 .logo {
@@ -31,9 +44,222 @@
   display: flex;
   gap: 30px;
   margin: 0;
+  align-items: center;
 }
 
-.navLinks > a {
+.navLinks li > a {
   text-decoration: none;
   color: #000;
+}
+
+.cartIcon a {
+  cursor: pointer;
+}
+
+
+.mobileSearchLink {
+  display: none;
+}
+
+
+/* =========================
+   Responsive @ 1024px
+   ========================= */
+
+@media (max-width: 1024px) {
+  .navWrapper {
+    width: 100%;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Hide all except cart + mobile search */
+  .navLinks li:not(.cartIcon):not(.mobileSearchLink) {
+    display: none;
+  }
+}
+
+/* =========================
+   Hamburger button
+   ========================= */
+
+.mobileMenuButton {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.mobileMenuButton span {
+  width: 20px;
+  height: 2px;
+  background-color: #000;
+  display: block;
+}
+
+
+/* =========================
+   Fullscreen Mobile Menu
+   ========================= */
+
+.mobileMenuBottom {
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  border-top: 1px solid #d4d4d4
+}
+
+.mobileMenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileMenuBottom a,
+.mobileMenu a {
+  padding: 1.25rem 0;
+  display:block;
+  text-decoration: none;
+  color: #000;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 500;
+}
+
+.mobileMenuButton {
+  position: relative;
+  z-index: 1001; /* above menu */
+  transition: background-color 0.3s ease;
+}
+
+.mobileMenuButton span {
+  transition: transform 0.3s ease, opacity 0.2s ease;
+}
+
+/* Open state */
+.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.popupContainer {
+  position: fixed;
+  right: 0px;
+  top: 75px;
+  width: 70%;
+  background-color: #fff;
+  z-index: 999;
+  padding: 2rem 2rem; /* space for fixed header */
+  text-align: left;
+}
+
+
+.mobileContainer,
+.popupContainer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobileContainer.show,
+.popupContainer.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+
+.popupContainer h2 {
+  font-size: 24px;
+  font-family: "Heading", monospace;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 10px;
+  display:block;
+}
+
+.searchMenu input {
+  display: inline-block;
+  width: calc(100% - 60px);
+  padding: 14px 16px;
+  font-size: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+}
+
+.searchMenu input:focus {
+  border-color: #000;
+}
+
+.cartMenu button,
+.searchMenu button {
+  display: inline-block;
+  width: 60px;
+  height: 100%;
+  outline: none;
+  border: none;
+  padding: 1rem;
+  font-family: 'IBM Plex Mono', monospace;
+  background-color: #c8ff00;
+}
+
+.cartMenu p {
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 40px;
+}
+
+.cartMenu button {
+  width: fit-content;
+}
+
+@media (max-width: 1024px) {
+  .mobileContainer {
+    position: fixed;
+    inset: 0;
+    background-color: #fff;
+    z-index: 999;
+    padding: 2rem 2rem; /* space for fixed header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mobileMenuButton {
+    display: flex;
+  }
+    /* Show mobile search */
+  .mobileSearchLink {
+    display: block;
+  }
+
+  .mobileSearchLink a {
+    cursor: pointer;
+  }
+
+  /* Show hamburger */
+  .mobileMenuButton {
+    display: flex;
+  }
+  .popupContainer {
+    inset: 0;
+    width: 100%;
+    padding: 10rem 2rem;
+    box-sizing:border-box;
+  }
 }
