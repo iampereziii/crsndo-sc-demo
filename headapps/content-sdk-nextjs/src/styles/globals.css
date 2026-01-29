@@ -28,6 +28,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   margin: 0;
+  position: relative;
 }
 
 .container {
@@ -124,4 +125,13 @@ ul {
 
 .disable-a-pointer-events a {
   pointer-events: none;
+}
+
+
+header {
+  position: sticky;
+  width: 100%;
+  z-index: 999;
+  top: 0;
+  margin-bottom: -128px;
 }
